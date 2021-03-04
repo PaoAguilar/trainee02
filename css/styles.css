@@ -1,0 +1,195 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Muli", sans-serif;
+  background-image: url("../img/weather.jpg");
+  background-size: cover;
+  background-position: top center;
+}
+
+.app-wrap {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-image: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.3),
+    rgba(0, 0, 0, 0.6)
+  );
+}
+
+header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 3.12rem 0.9rem 0.9rem;
+}
+
+header input {
+  width: 100%;
+  max-width: 17.5rem;
+  padding: 0.6rem 0.9rem;
+  border: none;
+  outline: none;
+  background-color: rgba(255, 255, 255, 0.3);
+  border-radius: 1rem;
+  color: #313131;
+  font-size: 1.25rem;
+}
+
+header input:focus {
+  background-color: rgba(255, 255, 255, 0.6);
+}
+
+main {
+  padding: 1.6rem 1.6rem 3.12rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.location-city {
+  color: #fff;
+  font-size: 32px;
+  font-weight: 500;
+  margin-bottom: 5px;
+}
+
+.location-date {
+  color: #fff;
+  font-size: 16px;
+}
+
+.temp {
+  color: #fff;
+  font-size: 4rem;
+  font-weight: 900;
+  margin: 0.1rem;
+}
+
+.temp span {
+  font-weight: 500;
+}
+
+.weather {
+  color: #fff;
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+.min-max {
+  color: #fff;
+  font-size: 24px;
+  font-weight: 500;
+}
+
+/* Carrousel styles */
+.carousel {
+  padding-left: 30px;
+  width: 100%;
+  position: relative;
+}
+
+.carousel__container {
+  margin: 70px 0px;
+  padding-bottom: 10px;
+}
+
+.carousel__container:hover .carousel-item {
+  opacity: 0.3;
+}
+
+.carousel__container:hover .carousel-item:hover {
+  transform: scale(1.5);
+  opacity: 1;
+}
+
+.carousel-item {
+  border-radius: 20px;
+  overflow: hidden;
+  position: relative;
+  display: inline-block;
+  width: 200px;
+  height: 250px;
+  margin-right: 10px;
+  font-size: 20px;
+  cursor: pointer;
+  transition: 450ms;
+  transform-origin: center left;
+}
+
+.carousel-item:hover ~ .carousel-item {
+  transform: translate3d(100px, 0, 0);
+}
+
+.carousel-item__img {
+  width: 200px;
+  height: 250px;
+  -o-object-fit: cover;
+  object-fit: cover;
+}
+
+.carousel-item__details {
+  padding: 0.9rem;
+  position: absolute;
+  right: 0;
+  top: 0;
+  left: 0;
+}
+
+.carrousel-temp {
+  color: #fff;
+  font-size: 3rem;
+  font-weight: 900;
+  margin: 1.1rem 0;
+  /* text-shadow: 0.12rem 0.3rem rgba(0, 0, 0, 0.6); */
+}
+
+.carrousel-temp span {
+  font-weight: 500;
+}
+
+.carrousel-weather {
+  color: #fff;
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 0.9rem;
+  /* text-shadow: 0 0.2rem rgba(0, 0, 0, 0.4); */
+}
+.carrousel-min-max {
+  color: #fff;
+  font-size: 1.5rem;
+  font-weight: 500;
+  /* text-shadow: 0 0.2rem rgba(0, 0, 0, 0.4); */
+}
+
+.carousel-title {
+  color: #fff;
+  margin-top: 0.9rem;
+  /* text-shadow: 0 0.2rem rgba(0, 0, 0, 0.4); */
+}
+
+.carousel-item:hover .carousel-item__details {
+  opacity: 1;
+}
+
+@media only screen and (max-width: 540px) {
+  .carousel-item {
+    transition: none;
+  }
+  .carousel__container:hover .carousel-item:hover {
+    transform: none;
+  }
+  .carousel-item:hover ~ .carousel-item {
+    transform: none;
+    opacity: 1;
+  }
+  .carousel__container:hover .carousel-item {
+    opacity: 1;
+  }
+}
