@@ -7,10 +7,33 @@ const weather = document.querySelector(".weather");
 const minMax = document.querySelector(".min-max");
 const locationDate = document.querySelector(".location-date");
 const carrouselItem = document.querySelector(".carousel__container");
+const searchInput = document.querySelector(".search-box");
+const icon = document.querySelector(".icon");
 
-const getDefaultData = async () => {
+const setValue = (e) => {
+  if (e.keyCode == 13) {
+    console.log(searchInput.value);
+    getResults(searchInput.value);
+  }
+};
+
+const getResults = async (place) => {
   try {
-    const res = await fetch(`${url}location/2487956/`);
+    const res = await fetch(`${url}location/search/?query=${place}`);
+    const weatherData = await res.json();
+    console.log(weatherData);
+    const location = weatherData[0];
+    getDefaultData(location.woeid);
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+searchInput.addEventListener("keypress", setValue);
+
+const getDefaultData = async (locationId) => {
+  try {
+    const res = await fetch(`${url}location/${locationId}`);
     const weatherData = await res.json();
 
     // data por defecto
@@ -18,6 +41,7 @@ const getDefaultData = async () => {
     temp.innerHTML = `${Math.round(
       weatherData.consolidated_weather[0].the_temp
     )}<span>°c</span>`;
+    icon.src = `https://www.metaweather.com/static/img/weather/png/64/${weatherData.consolidated_weather[0].weather_state_abbr}.png`;
     weather.innerText = `${weatherData.consolidated_weather[0].weather_state_name}`;
     minMax.innerText = `min ${Math.round(
       weatherData.consolidated_weather[0].min_temp
@@ -28,6 +52,7 @@ const getDefaultData = async () => {
     // data del next day
     let weatherDataFirst = weatherData.consolidated_weather.slice(1);
     console.log(weatherDataFirst);
+    carrouselItem.innerHTML = "";
     weatherDataFirst.map((result) => {
       console.log(result);
       carrouselItem.innerHTML += `
@@ -42,6 +67,9 @@ const getDefaultData = async () => {
                     <div class="carrousel-temp">${Math.round(
                       result.the_temp
                     )}<span>°c</span></div>
+                    <img src="https://www.metaweather.com/static/img/weather/png/64/${
+                      result.weather_state_abbr
+                    }.png"></img>
                     <div class="carrousel-weather">${
                       result.weather_state_name
                     }</div>
@@ -59,4 +87,4 @@ const getDefaultData = async () => {
   }
 };
 
-getDefaultData();
+getDefaultData("2487956/");

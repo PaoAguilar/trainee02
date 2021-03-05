@@ -143,11 +143,13 @@ main {
   height: 250px;
   -o-object-fit: cover;
   object-fit: cover;
+  opacity: 0.7;
 }
 
 .carousel-item__details {
   padding: 0.9rem;
   position: absolute;
+
   right: 0;
   top: 0;
   left: 0;
@@ -157,7 +159,6 @@ main {
   color: #fff;
   font-size: 3rem;
   font-weight: 900;
-  margin: 1.1rem 0;
   /* text-shadow: 0.12rem 0.3rem rgba(0, 0, 0, 0.6); */
 }
 
@@ -169,7 +170,7 @@ main {
   color: #fff;
   font-size: 1.5rem;
   font-weight: 700;
-  margin-bottom: 0.9rem;
+  margin-bottom: 0.2rem;
   /* text-shadow: 0 0.2rem rgba(0, 0, 0, 0.4); */
 }
 .carrousel-min-max {
@@ -181,7 +182,7 @@ main {
 
 .carousel-title {
   color: #fff;
-  margin-top: 0.9rem;
+  margin-top: 0.1rem;
   /* text-shadow: 0 0.2rem rgba(0, 0, 0, 0.4); */
 }
 

@@ -36,8 +36,6 @@ export const currentDate = () => {
 export const nextDay = () => {
   const day = days[fullDate.getDay() + 1];
   const date = fullDate.getDate() + 1;
-  const month = months[fullDate.getMonth() + 1];
-  const year = fullDate.getFullYear();
   console.log(fullDate);
-  return `${day} ${date} ${month} ${year}`;
+  return `${day} ${date}`;
 };
