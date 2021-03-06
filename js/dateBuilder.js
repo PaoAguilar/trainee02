@@ -14,13 +14,13 @@ var months = new Array(
   "December"
 );
 var days = new Array(
-  "Sunday",
   "Monday",
   "Tuesday",
   "Wednesday",
   "Thursday",
   "Friday",
-  "Saturday"
+  "Saturday",
+  "Sunday"
 );
 
 export const currentDate = () => {
@@ -28,14 +28,14 @@ export const currentDate = () => {
   const date = fullDate.getDate();
   const month = months[fullDate.getMonth()];
   const year = fullDate.getFullYear();
-  console.log(fullDate);
-  console.log(fullDate.getMonth() + 1);
+  // console.log(fullDate);
+  // console.log(fullDate.getMonth() + 1);
   return `${day} ${date} ${month} ${year}`;
 };
 
-export const nextDay = () => {
-  const day = days[fullDate.getDay() + 1];
+export const nextDay = (fullDate) => {
+  const day = days[fullDate.getDay()];
   const date = fullDate.getDate() + 1;
-  console.log(fullDate);
+  console.log(fullDate.getDay());
   return `${day} ${date}`;
 };

@@ -26,14 +26,15 @@ header {
   display: flex;
   justify-content: center;
   align-items: center;
-  flex-direction: column;
+  flex-direction: initial;
   padding: 3.12rem 0.9rem 0.9rem;
 }
 
 header input {
-  width: 100%;
+  /* width: 100%; */
   max-width: 17.5rem;
   padding: 0.6rem 0.9rem;
+  /* margin-left: 3rem; */
   border: none;
   outline: none;
   background-color: rgba(255, 255, 255, 0.3);
@@ -45,15 +46,25 @@ header input {
 header input:focus {
   background-color: rgba(255, 255, 255, 0.6);
 }
-
-.match-list {
-  /* background-color: yellow; */
-  width: 100%;
-  max-width: 17.5rem;
+.search-container {
   display: flex;
-  justify-content: center;
-  align-items: center;
-  /* padding: 0.3rem 0.9rem; */
+}
+
+.local-storage {
+  border: none;
+}
+
+.search-button {
+  /* width: 100%; */
+  max-width: 9rem;
+  /* margin-left: 3rem; */
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+  max-height: 100px;
+  overflow-y: scroll;
 }
 
 main {
@@ -62,6 +73,17 @@ main {
   flex-direction: column;
   align-items: center;
   text-align: center;
+}
+
+.city {
+  height: 30px;
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+.city:hover {
+  height: 30px;
+  background-color: #f1f1f1;
 }
 
 .location-city {
