@@ -27,14 +27,11 @@ export const getAllWeatherData = async (locationId) => {
     )}°c / max ${Math.round(weatherData.consolidated_weather[0].max_temp)}°c`;
     locationDate.innerText = currentDate();
 
-    // console.log(weatherData);
-
     // Data for the next 5 days
     let weatherFirstIndexRemoved = weatherData.consolidated_weather.slice(1);
     console.log(weatherFirstIndexRemoved);
     carrouselItem.innerHTML = "";
     weatherFirstIndexRemoved.map((result) => {
-      //   console.log(result);
       carrouselItem.innerHTML += `
                 <div class="carousel-item">
                 <img

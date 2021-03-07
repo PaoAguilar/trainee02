@@ -1,5 +1,5 @@
 const fullDate = new Date();
-var months = new Array(
+let months = new Array(
   "January",
   "February",
   "March",
@@ -13,7 +13,7 @@ var months = new Array(
   "November",
   "December"
 );
-var days = new Array(
+let days = new Array(
   "Monday",
   "Tuesday",
   "Wednesday",
@@ -28,8 +28,6 @@ export const currentDate = () => {
   const date = fullDate.getDate();
   const month = months[fullDate.getMonth()];
   const year = fullDate.getFullYear();
-  // console.log(fullDate);
-  // console.log(fullDate.getMonth() + 1);
   return `${day} ${date} ${month} ${year}`;
 };
 

@@ -8,7 +8,7 @@ const setLocation = (e) => {
     getResults(searchInput.value);
   }
 };
-
+let idsArray = [];
 const getResults = async (place) => {
   try {
     const res = await fetch(`${url}location/search/?query=${place}`);
@@ -16,15 +16,27 @@ const getResults = async (place) => {
     // console.log(weatherData);
     const location = weatherData[0];
     getAllWeatherData(location.woeid);
-    // locastorage
-    // const previouStorage = localStorage.setItem("previousCity", location.woeid);
-    // const getStorage = localStorage.getItem(previouStorage);
-    // const previous = document.querySelector(".local-storage");
-    // previous.addEventListener("click", getAllWeatherData(getStorage));
+
+    // set the localstorage
+    idsArray.push(location.woeid);
+    console.log(idsArray);
+    localStorage.setItem("ids", JSON.stringify(idsArray));
   } catch (error) {
     console.log(error);
   }
 };
+
+// get the localstorage
+const previousButton = document.querySelector(".local-storage");
+previousButton.addEventListener("click", () => {
+  const showId = idsArray.length;
+  console.log(showId);
+  const data = JSON.parse(localStorage.getItem("ids"));
+  console.log(data);
+  // console.log(data[showId]);
+  getAllWeatherData(data[0]);
+});
+
 searchInput.addEventListener("keypress", setLocation);
 
 const getSuggestions = async () => {
