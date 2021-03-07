@@ -62,7 +62,7 @@ const getSuggestions = async () => {
       cityElement.addEventListener("click", () => {
         searchInput.value = result.title;
         getResults(result.title);
-        // cityElement.innerHTML = "";
+        dropDown.innerHTML = "";
       });
       dropDown.appendChild(cityElement);
     });
