@@ -16,6 +16,11 @@ const getResults = async (place) => {
     // console.log(weatherData);
     const location = weatherData[0];
     getAllWeatherData(location.woeid);
+    // locastorage
+    // const previouStorage = localStorage.setItem("previousCity", location.woeid);
+    // const getStorage = localStorage.getItem(previouStorage);
+    // const previous = document.querySelector(".local-storage");
+    // previous.addEventListener("click", getAllWeatherData(getStorage));
   } catch (error) {
     console.log(error);
   }
@@ -39,14 +44,15 @@ const getSuggestions = async () => {
     loading.innerHTML = "";
     dropDown.innerHTML = "";
     cities.map((result) => {
-      const cityEl = document.createElement("li");
-      cityEl.classList.add("city");
-      cityEl.innerText = result.title;
-      cityEl.addEventListener("click", () => {
+      const cityElement = document.createElement("li");
+      cityElement.classList.add("city");
+      cityElement.innerText = result.title;
+      cityElement.addEventListener("click", () => {
         searchInput.value = result.title;
         getResults(result.title);
+        // cityElement.innerHTML = "";
       });
-      dropDown.appendChild(cityEl);
+      dropDown.appendChild(cityElement);
     });
   } catch (error) {}
 };
@@ -62,5 +68,5 @@ const debounce = (fn, delay) => {
     }, delay);
   };
 };
-const debounceForData = debounce(getSuggestions, 1000);
+const debounceForData = debounce(getSuggestions, 500);
 searchInput.addEventListener("keyup", debounceForData);
