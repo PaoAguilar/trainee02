@@ -29,7 +29,7 @@ export const getAllWeatherData = async (locationId) => {
 
     // Data for the next 5 days
     let weatherFirstIndexRemoved = weatherData.consolidated_weather.slice(1);
-    console.log(weatherFirstIndexRemoved);
+    // console.log(weatherFirstIndexRemoved);
     carrouselItem.innerHTML = "";
     weatherFirstIndexRemoved.map((result) => {
       carrouselItem.innerHTML += `

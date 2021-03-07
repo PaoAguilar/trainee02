@@ -29,12 +29,12 @@ const getResults = async (place) => {
 // get the localstorage
 const previousButton = document.querySelector(".local-storage");
 previousButton.addEventListener("click", () => {
-  const showId = idsArray.length;
-  console.log(showId);
   const data = JSON.parse(localStorage.getItem("ids"));
+  const showlength = data.length - 1;
+  console.log(showlength);
   console.log(data);
   // console.log(data[showId]);
-  getAllWeatherData(data[0]);
+  getAllWeatherData(data[showlength]);
 });
 
 searchInput.addEventListener("keypress", setLocation);

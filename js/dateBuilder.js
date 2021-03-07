@@ -34,6 +34,5 @@ export const currentDate = () => {
 export const nextDay = (fullDate) => {
   const day = days[fullDate.getDay()];
   const date = fullDate.getDate() + 1;
-  console.log(fullDate.getDay());
   return `${day} ${date}`;
 };
