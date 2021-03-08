@@ -49,11 +49,6 @@ header input:focus {
 .search-container {
   display: flex;
 }
-/* 
-.search {
-  display: flex;
-  flex-direction: row;
-} */
 
 .local-storage {
   background-color: #ddaa70;
@@ -68,12 +63,6 @@ header input:focus {
   justify-content: center;
   margin-left: 5rem;
   margin-bottom: 1rem;
-}
-
-.search-button {
-  /* width: 100%; */
-  max-width: 9rem;
-  /* margin-left: 3rem; */
 }
 
 .dropdown {

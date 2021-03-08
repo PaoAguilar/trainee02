@@ -29,7 +29,6 @@ export const getAllWeatherData = async (locationId) => {
 
     // Data for the next 5 days
     let weatherFirstIndexRemoved = weatherData.consolidated_weather.slice(1);
-    // console.log(weatherFirstIndexRemoved);
     carrouselItem.innerHTML = "";
     weatherFirstIndexRemoved.map((result) => {
       carrouselItem.innerHTML += `
@@ -66,4 +65,21 @@ export const getAllWeatherData = async (locationId) => {
   }
 };
 
-getAllWeatherData("2487956/");
+const initApp = () => {
+  let idsArray = [];
+  const encodeData = localStorage.getItem("ids");
+  idsArray = localStorage.getItem("ids")
+    ? JSON.parse(localStorage.getItem("ids"))
+    : [];
+
+  if (encodeData === null) {
+    idsArray.push(2487956);
+    console.log(idsArray);
+    localStorage.setItem("ids", JSON.stringify(idsArray));
+    getAllWeatherData("2487956/");
+  } else {
+    getAllWeatherData(idsArray[idsArray.length - 1]);
+  }
+};
+
+initApp();

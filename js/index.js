@@ -8,15 +8,17 @@ const setLocation = (e) => {
     getResults(searchInput.value);
   }
 };
-let idsArray = [];
 const getResults = async (place) => {
   try {
     const res = await fetch(`${url}location/search/?query=${place}`);
     const weatherData = await res.json();
-    // console.log(weatherData);
     const location = weatherData[0];
     getAllWeatherData(location.woeid);
 
+    let idsArray = [];
+    idsArray = localStorage.getItem("ids")
+      ? JSON.parse(localStorage.getItem("ids"))
+      : [];
     // set the localstorage
     idsArray.push(location.woeid);
     console.log(idsArray);
@@ -29,12 +31,21 @@ const getResults = async (place) => {
 // get the localstorage
 const previousButton = document.querySelector(".local-storage");
 previousButton.addEventListener("click", () => {
-  const data = JSON.parse(localStorage.getItem("ids"));
-  const showlength = data.length - 1;
-  console.log(showlength);
-  console.log(data);
-  // console.log(data[showId]);
-  getAllWeatherData(data[showlength]);
+  const encodeData = localStorage.getItem("ids");
+  console.log(encodeData);
+  const data = localStorage.getItem("ids")
+    ? JSON.parse(localStorage.getItem("ids"))
+    : [];
+  if (encodeData === null) {
+    console.log("No data");
+  } else if (data.length < 2) {
+    console.log("Can't do previous");
+  } else {
+    const showlength = data.length - 2;
+    getAllWeatherData(data[showlength]);
+    data.pop();
+    localStorage.setItem("ids", JSON.stringify(data));
+  }
 });
 
 searchInput.addEventListener("keypress", setLocation);
