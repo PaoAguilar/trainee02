@@ -2,6 +2,7 @@ import { getAllWeatherData } from "./weatherData.js";
 const url =
   "https://secret-ocean-49799.herokuapp.com/https://www.metaweather.com/api/";
 const searchInput = document.querySelector(".search-box");
+const previousButton = document.querySelector(".local-storage");
 
 const setLocation = (e) => {
   if (e.keyCode == 13) {
@@ -15,11 +16,11 @@ const getResults = async (place) => {
     const location = weatherData[0];
     getAllWeatherData(location.woeid);
 
+    // set the localstorage
     let idsArray = [];
     idsArray = localStorage.getItem("ids")
       ? JSON.parse(localStorage.getItem("ids"))
       : [];
-    // set the localstorage
     idsArray.push(location.woeid);
     console.log(idsArray);
     localStorage.setItem("ids", JSON.stringify(idsArray));
@@ -29,7 +30,6 @@ const getResults = async (place) => {
 };
 
 // get the localstorage
-const previousButton = document.querySelector(".local-storage");
 previousButton.addEventListener("click", () => {
   const encodeData = localStorage.getItem("ids");
   console.log(encodeData);

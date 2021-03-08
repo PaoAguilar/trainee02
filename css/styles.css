@@ -65,6 +65,10 @@ header input:focus {
   margin-bottom: 1rem;
 }
 
+.hidden {
+  display: none;
+}
+
 .dropdown {
   position: relative;
   display: inline-block;

@@ -71,7 +71,7 @@ const initApp = () => {
   idsArray = localStorage.getItem("ids")
     ? JSON.parse(localStorage.getItem("ids"))
     : [];
-
+  // Load Houston's id
   if (encodeData === null) {
     idsArray.push(2487956);
     console.log(idsArray);
